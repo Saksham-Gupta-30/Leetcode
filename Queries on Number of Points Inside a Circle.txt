@@ -1,0 +1,14 @@
+class Solution {
+public:
+    vector<int> countPoints(vector<vector<int>>& points, vector<vector<int>>& queries) {
+        vector<int> ans;
+        for (auto i: queries) {
+            int count = 0;
+            for (auto j: points) {
+                if ((j[0] - i[0])*(j[0] - i[0]) + (j[1] - i[1])*(j[1] - i[1]) <= (i[2] * i[2])) count += 1;
+            }
+            ans.push_back(count);
+        }
+        return ans;
+    }
+};

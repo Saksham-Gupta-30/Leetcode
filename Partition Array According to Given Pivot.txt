@@ -1,0 +1,19 @@
+class Solution {
+public:
+    vector<int> pivotArray(vector<int>& nums, int pivot) {
+        vector<int> vec;
+        queue<int> q;
+        int p = 0;
+        for (auto it: nums) {
+            if (it < pivot) vec.push_back(it);
+            else if (it > pivot) q.push(it);
+            else p++;
+        }
+        while (p--) vec.push_back(pivot);
+        while (!q.empty()) {
+            vec.push_back(q.front());
+            q.pop();
+        }
+        return vec;
+    }
+};

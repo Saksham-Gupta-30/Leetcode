@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        vector<int> vec;
+        if (digits.back() != 9) digits.back() += 1;
+        else {
+            vec.push_back(0);
+            int carry = 1;
+            for (int i = digits.size() - 2; i >= 0; i--) {
+                if (digits[i] + carry == 10) {
+                    vec.push_back(0);
+                }
+                else {
+                    if (carry == 1) {
+                        vec.push_back(digits[i] + 1);
+                        carry = 0;
+                    }
+                    else {
+                        vec.push_back(digits[i]);
+                    }
+                }
+            }
+            if (carry == 1) vec.push_back(1);
+            digits.clear();
+            for (auto it = vec.rbegin(); it != vec.rend(); it++) {
+                digits.push_back(*it);
+            }
+        }
+        vec.clear();
+        return digits;
+    }
+};

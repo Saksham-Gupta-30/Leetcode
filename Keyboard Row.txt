@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        int first, second, third;
+        vector<string> res;
+        for (auto it: words) {
+            first = second = third = 0;
+            for (auto i: it) {
+                i = tolower(i);
+                if (i == 'q' or i == 'w' or i == 'e' or i == 'r' or i == 't' or i == 'y' or i == 'u' or i == 'i' or i == 'o' or i == 'p') {
+                    first++;
+                }
+                else if (i == 'a' or i == 's' or i == 'd' or i == 'f' or i == 'g' or i == 'h' or i == 'j' or i == 'k' or i == 'l') {
+                    second++;
+                }
+                else {
+                    third++;
+                }
+            }
+            if (first == it.size() or second == it.size() or third == it.size()) res.push_back(it);
+        }
+        return res;
+    }
+};

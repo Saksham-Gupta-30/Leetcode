@@ -1,0 +1,31 @@
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& score) {
+        vector<pair<int , int>> ranks;
+        
+        for(int i = 0 ; i < score.size() ; i++) {
+            ranks.push_back({score[i] , i});
+        }
+        
+        sort(ranks.rbegin() , ranks.rend());
+        
+        vector<string> answer(score.size());
+        
+        for(int i = 0; i < ranks.size() ; i++) {
+            if(i == 0) {
+                answer[ranks[i].second] = "Gold Medal";
+            }
+            else if(i == 1) {
+                answer[ranks[i].second] = "Silver Medal";
+            }
+            else if(i == 2) {
+                answer[ranks[i].second] = "Bronze Medal";
+            }
+            else {
+                answer[ranks[i].second] = to_string(i + 1);
+            }
+        }
+        
+        return answer;
+    }
+};

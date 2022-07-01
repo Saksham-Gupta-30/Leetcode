@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maximumUnits(vector<vector<int>>& nums, int truckSize) {
+        int min_ind = INT_MAX;
+        for (int i = 0; i < nums.size() - 1; i++) {
+            min_ind = i;
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (nums[j][1] < nums[min_ind][1]) min_ind = j; 
+            }
+            swap(nums[min_ind], nums[i]);
+        }
+        reverse(nums.begin(), nums.end());
+        int res = 0;
+        for (auto it: nums) {
+            if (it[0] <= truckSize) {
+                res += it[0]*it[1];
+                truckSize -= it[0];
+            }
+            else if (it[0] > truckSize and truckSize != 0) {
+                res += truckSize*it[1];
+                break;
+            }
+        }
+        return res;
+    }
+};

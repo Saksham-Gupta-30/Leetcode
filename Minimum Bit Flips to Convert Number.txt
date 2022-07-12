@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int minBitFlips(int start, int goal) {
+        int count = 0;
+        while (max(start, goal) != 0) {
+            int x = start & 1;
+            int y = goal & 1;
+            if (x != y) {
+                count++;
+                start = start >> 1;
+                goal = goal >> 1;
+            }
+            else {
+                start = start >> 1;
+                goal = goal >> 1;
+            }
+        }
+        return count;
+    }
+};

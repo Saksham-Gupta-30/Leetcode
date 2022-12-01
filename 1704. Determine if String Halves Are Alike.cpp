@@ -7,6 +7,7 @@ public:
         }
         return count;
     }
+    
     bool halvesAreAlike(string s) {
         int x = countVowels(s.substr(0, s.size() / 2));
         int y = countVowels(s.substr(s.size() / 2, s.size()));
